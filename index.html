@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume-Job Matcher Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background elements -->
+    <div class="bg-bubbles">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <div class="container">
+        <!-- Glassmorphism card -->
+        <div class="card glass">
+            <div class="card-header">
+                <h1 class="gradient-text">Resume<span>Match</span>Pro</h1>
+                <p class="subtitle">AI-powered resume to job description analysis</p>
+            </div>
+
+            <div class="upload-grid">
+                <!-- Resume Upload -->
+                <div class="upload-card" id="resume-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-file-user"></i>
+                    </div>
+                    <h3>Upload Resume</h3>
+                    <p>PDF, DOCX, or TXT files</p>
+                    <input type="file" id="resume-upload" accept=".pdf,.doc,.docx,.txt" hidden>
+                    <button class="btn-upload" id="resume-btn">Select File</button>
+                    <div class="file-info" id="resume-info">No file selected</div>
+                    <div class="drop-zone">
+                        <span>or drag & drop here</span>
+                    </div>
+                </div>
+
+                <!-- Job Description Upload -->
+                <div class="upload-card" id="jd-card">
+                    <div class="upload-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Job Description</h3>
+                    <p>PDF, DOCX, TXT, or paste text</p>
+                    <input type="file" id="jd-upload" accept=".pdf,.doc,.docx,.txt" hidden>
+                    <button class="btn-upload" id="jd-btn">Select File</button>
+                    <div class="file-info" id="jd-info">No file selected</div>
+                    <div class="drop-zone">
+                        <span>or drag & drop here</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Textarea alternative -->
+            <div class="text-option">
+                <h4>Or paste job description text:</h4>
+                <textarea id="jd-text" placeholder="Paste job description here..."></textarea>
+            </div>
+
+            <button class="btn-analyze" id="analyze-btn">
+                <span class="btn-text">Analyze Match</span>
+                <span class="btn-loader hidden"><i class="fas fa-spinner fa-spin"></i></span>
+            </button>
+        </div>
+
+        <!-- Results Section (initially hidden) -->
+        <div class="results-container hidden" id="results-container">
+            <div class="card glass">
+                <div class="results-header">
+                    <h2>Analysis Results</h2>
+                    <div class="match-score" id="match-score">
+                        <div class="score-circle">
+                            <svg class="progress-ring" width="120" height="120">
+                                <circle class="progress-ring-circle" stroke-width="8" fill="transparent" r="52" cx="60" cy="60"/>
+                            </svg>
+                            <div class="score-value">0%</div>
+                        </div>
+                        <h3>Match Score</h3>
+                    </div>
+                </div>
+
+                <div class="results-details">
+                    <div class="detail-card">
+                        <h4>Skills Match</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="skills-progress"></div>
+                        </div>
+                        <div class="detail-value" id="skills-value">0%</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <h4>Experience Level</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="exp-progress"></div>
+                        </div>
+                        <div class="detail-value" id="exp-value">0%</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <h4>Education Match</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="edu-progress"></div>
+                        </div>
+                        <div class="detail-value" id="edu-value">0%</div>
+                    </div>
+
+                    <div class="detail-card">
+                        <h4>Keyword Match</h4>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="keywords-progress"></div>
+                        </div>
+                        <div class="detail-value" id="keywords-value">0%</div>
+                    </div>
+                </div>
+
+                <div class="suggestions">
+                    <h4>Improvement Suggestions</h4>
+                    <ul id="suggestions-list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                </div>
+
+                <button class="btn-new-analysis" id="new-analysis-btn">
+                    <i class="fas fa-redo"></i> New Analysis
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="glass">
+        <p>Powered by AI Resume Matcher | © 2023 All rights reserved</p>
+    </footer>
+
+    <!-- Confetti canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>
